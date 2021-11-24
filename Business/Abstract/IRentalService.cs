@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Validate
+namespace Business.Abstract
 {
-    public interface ICarValidateService : IValidateRepository<Car>
+    public interface IRentalService : IRepsoitoryService<Rental>
     {
     }
 }

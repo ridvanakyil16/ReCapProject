@@ -11,70 +11,45 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal(),new CarValidateManager());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            CarManager carManager = new CarManager(new EfCarDal(), new BrandManager(new EfBrandDal()));
             ColorManager colorManager = new ColorManager(new EfColorDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            UserManager userManager = new UserManager(new EfUserDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
 
-            Console.WriteLine("=============== Araba İd'sine Göre Araba Getirme ===============");
-            Console.WriteLine(carManager.GetById(3).CarName);
+            RentalAdd(rentalManager);
+            //CustomerAdd(customerManager);
 
-            Console.WriteLine("");
-            Console.WriteLine("=============== Araba İd'sine Göre Arabanın Özelliklerini Getirme ===============");
-            foreach (var car in carManager.GetAllById(3))
+        }
+
+        private static void CustomerAdd(CustomerManager customerManager)
+        {
+            Customer customer = new Customer();
+            customer.UserId = 4;
+            customer.CompanyName = "Soft";
+
+            var result = customerManager.Add(customer);
+            if (result.Success == true)
             {
-                Console.WriteLine(car.CarId +" "+ car.CarName + " " + car.BrandId + " " + car.ColorId + " " + car.DailyPrice + " " + car.Description);
+                Console.WriteLine(result.Message);
             }
-
-            Console.WriteLine("");
-            Console.WriteLine("=============== Renk İd'sine Göre Araba Getirme ===============");
-
-            Console.WriteLine("");
-            Console.WriteLine("=============== Marka İd'sine Göre Araba Getirme ===============");
-
-            //Console.WriteLine("");
-            //Console.WriteLine("=============== Araç Ekleme ===============");
-            //Car car = new Car();
-            //car.CarName = "Tesla";
-            //car.BrandId = 1;
-            //car.ColorId = 1;
-            //car.DailyPrice = 2000;
-            //car.Description = "Tesla Sıfır Kiralık Araç";
-            //carManager.Add(car);
-
-            //Console.WriteLine("");
-            //Console.WriteLine("=============== Araç Güncelleme ===============");
-            //Car car2 = new Car();
-            //car2.CarId = 3;
-            //car2.CarName = "Tesla";
-            //car2.BrandId = 1;
-            //car2.ColorId = 1;
-            //car2.DailyPrice = 2000;
-            //car2.Description = "Tesla Sıfır Kiralık Araç";
-            //carManager.Update(car2);
-
-
-            //Console.WriteLine("");
-            //Console.WriteLine("=============== Araç Silme ===============");
-            //Car car3 = new Car();
-            //car3.CarId = 5003;
-            //carManager.Delete(car3);
-
-            Console.WriteLine("");
-            Console.WriteLine("=============== Araç Detayları ===============");
-
-            foreach (var car in carManager.GetCarDetail())
+            else
             {
-                Console.WriteLine(car.CarId + " " + car.CarName + " " + car.BrandName + " " + car.ColorName + " " + car.DailyPrice);
+                customerManager.Add(customer);
+                Console.WriteLine(result.Message);
             }
+        }
 
-            Console.WriteLine("");
-            Console.WriteLine("=============== Tüm Araçlar ===============");
-
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.CarId + " " + car.CarName + " " + car.DailyPrice);
-            }
+        private static void RentalAdd(RentalManager rentalManager)
+        {
+            Rental rental = new Rental();
+            rental.CarId = 1;
+            rental.CustomerId =4;
+            rental.RentDate = new DateTime(2021,11,1);
+            
+            var result = rentalManager.Add(rental);
+            Console.WriteLine(result.Message);
         }
     }
 }
