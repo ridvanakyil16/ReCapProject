@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Core.Entites;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Entites.DTOs
 {
-    public class UserForRegisterDto
+    public class UserForRegisterDto : IDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
