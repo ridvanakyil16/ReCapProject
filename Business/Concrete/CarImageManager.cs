@@ -85,7 +85,7 @@ namespace Business.Concrete
         {
             //1 arabanın en fazla 5 resmi olabilir dediğimiz kod bloğu.
             var carImageCount = _carImageDal.GetAll(p => p.CarId == carid).Count;
-            if (carImageCount > 5)
+            if (carImageCount >= 5)
             {
                 return new ErrorResult();
             }

@@ -54,12 +54,12 @@ namespace Business.Constants
         public static string RentalUpdated = "Kiralama Güncellendi";
         public static string RentalDeleted = "Kiralama Silindi";
 
-        public static string CustomersListed = "Kullanıcılar Listelendi";
-        public static string CustomerListed = "Kullanıcı Listelendi";
-        public static string CustomerAdded = "Kullanıcı Eklendi";
-        public static string CustomerNotAdded = "Kullanıcı Eklenemedi!";
-        public static string CustomerUpdated = "Kullanıcı Güncellendi";
-        public static string CustomerDeleted = "Kullanıcı Silindi";
+        public static string CustomersListed = "Müşteriler Listelendi";
+        public static string CustomerListed = "Müşteriler Listelendi";
+        public static string CustomerAdded = "Müşteriler Eklendi";
+        public static string CustomerNotAdded = "Müşteriler Eklenemedi!";
+        public static string CustomerUpdated = "Müşteriler Güncellendi";
+        public static string CustomerDeleted = "Müşteriler Silindi";
 
 
         public static string CarCountOfCategoryError = "Bir Kategoride En Fazla 10 Araç Olabilir.";
@@ -71,5 +71,6 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Bu Kullanıcı Zaten Mevcut";
         public static string UserRegistered = "Kullanıcı Başarıyla Kaydedildi";
         public static string AccessTokenCreated = "Access Token Başarıyla Oluşturuldu";
+        public static string AuthorizationDenied = "Yetkiniz yok.";
     }
 }

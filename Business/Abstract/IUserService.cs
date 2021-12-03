@@ -10,6 +10,6 @@ namespace Business.Abstract
     public interface IUserService : IRepsoitoryService<User>
     {
         IDataResult<List<OperationClaim>> ClaimsGet(User user);
-        IDataResult<User> Email(string email);
+        IDataResult<User> Email(string email);  
     }
 }
